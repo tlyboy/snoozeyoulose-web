@@ -8,7 +8,8 @@ export interface DownloadEntry {
   url: string
 }
 
-// 部署时按区域填写：国内 → 阿里云 OSS，国际 → Cloudflare R2。
+// 下载源：GitHub 公开 release 下载根（https://github.com/<owner>/<repo>/releases/download）。
+// 最终 URL = `${BASE}/v${VERSION}/${filename}`；若改用 OSS/R2 扁平存储，去掉 buildUrl 里的 `v${VERSION}/` 段。
 const VERSION = process.env.NEXT_PUBLIC_GAME_VERSION ?? '0.0.0'
 const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(
   /\/$/,
@@ -24,13 +25,16 @@ function fileName(platform: Platform, arch: Arch): string {
       return `${PRODUCT}-Mac-${VERSION}-${arch}-Installer.dmg`
     case 'windows':
       return `${PRODUCT}-Windows-${VERSION}-Setup.exe`
-    case 'linux':
-      return `${PRODUCT}-Linux-${VERSION}-${arch}.AppImage`
+    case 'linux': {
+      // electron-builder 的 AppImage 把 x64 命名为 x86_64
+      const linuxArch = arch === 'x64' ? 'x86_64' : arch
+      return `${PRODUCT}-Linux-${VERSION}-${linuxArch}.AppImage`
+    }
   }
 }
 
 function buildUrl(platform: Platform, arch: Arch): string {
-  return `${BASE}/${fileName(platform, arch)}`
+  return `${BASE}/v${VERSION}/${fileName(platform, arch)}`
 }
 
 export const downloads: DownloadEntry[] = [
