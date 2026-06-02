@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "手慢无 SnoozeYouLose — 治愈农场模拟 × Galgame",
+    "description": "把治愈系农场模拟与分支剧情视觉小说融为一体。种植、收获、体验剧情，还能自由 MOD。"
+  },
+  "nav": {
+    "features": "特性",
+    "download": "下载"
+  },
+  "hero": {
+    "tagline": "手快有，手慢无。",
+    "title": "手慢无",
+    "subtitle": "治愈系农场模拟 × Galgame 的混合体。经营你的农场，体验随选择分支的剧情，还能自由 MOD。",
+    "ctaDownload": "立即下载",
+    "ctaFeatures": "了解特性",
+    "versionLabel": "版本"
+  },
+  "features": {
+    "title": "你会爱上的几件事",
+    "subtitle": "悠闲的农场生活，加上随你选择而改变的剧情。",
+    "items": {
+      "farming": {
+        "title": "农场种植",
+        "desc": "翻土、播种、浇水、收获——在一片有生命的 3D 农场里经营你的田地。"
+      },
+      "galgame": {
+        "title": "分支剧情",
+        "desc": "Galgame 式对话，每一个选择都会设置剧情标志、改变你的路线。"
+      },
+      "mods": {
+        "title": "MOD 系统",
+        "desc": "数据驱动的 MOD 架构——无需编程即可新增作物、道具、NPC 与剧本。"
+      },
+      "gamepad": {
+        "title": "手柄支持",
+        "desc": "完整支持 PS5 DualSense 手柄，准心交互与振动反馈一应俱全。"
+      }
+    }
+  },
+  "download": {
+    "title": "下载手慢无",
+    "subtitle": "免费且开源。支持 macOS、Windows 与 Linux。",
+    "versionLabel": "最新版本",
+    "platform": {
+      "mac": "macOS",
+      "windows": "Windows",
+      "linux": "Linux"
+    },
+    "arch": {
+      "arm64": "Apple 芯片",
+      "x64": "Intel / x64"
+    },
+    "action": "下载"
+  },
+  "footer": {
+    "tagline": "由 tlyboy 用心打造。",
+    "rights": "保留所有权利。"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "zh": "简体中文"
+  }
+}
