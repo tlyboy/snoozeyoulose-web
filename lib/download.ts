@@ -8,33 +8,33 @@ export interface DownloadEntry {
   url: string
 }
 
-// Download source: the GitHub public release download root (https://github.com/<owner>/<repo>/releases/download).
-// Final URL = `${BASE}/v${VERSION}/${filename}`; if switching to flat OSS/R2 storage, remove the `v${VERSION}/` segment from buildUrl.
-const VERSION = process.env.NEXT_PUBLIC_GAME_VERSION ?? '0.0.0'
-const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(
-  /\/$/,
-  '',
-)
+// Download source: the permanent latest/download URL root for GitHub public releases.
+// Format: https://github.com/<owner>/<repo>/releases/latest/download
+// Artifact names omit the version number → always point to the latest release, so the official site needs no changes or rebuilds when a new game version ships.
+const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(/\/$/, '')
 
-// Keep this consistent with the ASCII artifact names produced by the game's electron-builder.
+// Keep these consistent with the game's electron-builder ASCII artifact names (which also omit the version number).
 const PRODUCT = 'SnoozeYouLose'
+
+// Latest release page (without the trailing /download), used as the link for the "Latest version" badge.
+export const latestReleaseUrl = BASE.replace(/\/download$/, '')
 
 function fileName(platform: Platform, arch: Arch): string {
   switch (platform) {
     case 'mac':
-      return `${PRODUCT}-Mac-${VERSION}-${arch}-Installer.dmg`
+      return `${PRODUCT}-Mac-${arch}-Installer.dmg`
     case 'windows':
-      return `${PRODUCT}-Windows-${VERSION}-Setup.exe`
+      return `${PRODUCT}-Windows-Setup.exe`
     case 'linux': {
       // electron-builder names the x64 AppImage x86_64
       const linuxArch = arch === 'x64' ? 'x86_64' : arch
-      return `${PRODUCT}-Linux-${VERSION}-${linuxArch}.AppImage`
+      return `${PRODUCT}-Linux-${linuxArch}.AppImage`
     }
   }
 }
 
 function buildUrl(platform: Platform, arch: Arch): string {
-  return `${BASE}/v${VERSION}/${fileName(platform, arch)}`
+  return `${BASE}/${fileName(platform, arch)}`
 }
 
 export const downloads: DownloadEntry[] = [
@@ -53,5 +53,3 @@ export const downloads: DownloadEntry[] = [
     url: buildUrl('linux', 'x64'),
   },
 ]
-
-export const gameVersion = VERSION
