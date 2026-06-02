@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "SnoozeYouLose — Cozy Farm Sim meets Galgame",
+    "description": "A cozy farming simulator fused with branching visual-novel storytelling. Plant, harvest, live the story, and mod it your own way."
+  },
+  "nav": {
+    "features": "Features",
+    "download": "Download"
+  },
+  "hero": {
+    "tagline": "Plant. Snooze. Lose? Never.",
+    "title": "SnoozeYouLose",
+    "subtitle": "A cozy farm-sim x Galgame hybrid. Grow your farm, live the branching story, and mod it your own way.",
+    "ctaDownload": "Download now",
+    "ctaFeatures": "Explore features",
+    "versionLabel": "Version"
+  },
+  "features": {
+    "title": "A few things you'll love",
+    "subtitle": "A laid-back farm life with a story that bends to your choices.",
+    "items": {
+      "farming": {
+        "title": "Farming & Planting",
+        "desc": "Till the soil, sow seeds, water your crops, and harvest across a living 3D farm."
+      },
+      "galgame": {
+        "title": "Branching Story",
+        "desc": "Galgame-style dialogue where every choice sets flags and reshapes your route."
+      },
+      "mods": {
+        "title": "Mod System",
+        "desc": "A data-driven mod architecture — add crops, items, NPCs and scripts without code."
+      },
+      "gamepad": {
+        "title": "Gamepad Support",
+        "desc": "Full PS5 DualSense support with aim-to-interact and haptic feedback."
+      }
+    }
+  },
+  "download": {
+    "title": "Download SnoozeYouLose",
+    "subtitle": "Free and open source. Available for macOS, Windows and Linux.",
+    "versionLabel": "Latest version",
+    "platform": {
+      "mac": "macOS",
+      "windows": "Windows",
+      "linux": "Linux"
+    },
+    "arch": {
+      "arm64": "Apple Silicon",
+      "x64": "Intel / x64"
+    },
+    "action": "Download"
+  },
+  "footer": {
+    "tagline": "Made with care by tlyboy.",
+    "rights": "All rights reserved."
+  },
+  "language": {
+    "label": "Language",
+    "en": "English",
+    "zh": "简体中文"
+  }
+}
