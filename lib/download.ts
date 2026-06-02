@@ -8,33 +8,33 @@ export interface DownloadEntry {
   url: string
 }
 
-// 下载源：GitHub 公开 release 下载根（https://github.com/<owner>/<repo>/releases/download）。
-// 最终 URL = `${BASE}/v${VERSION}/${filename}`；若改用 OSS/R2 扁平存储，去掉 buildUrl 里的 `v${VERSION}/` 段。
-const VERSION = process.env.NEXT_PUBLIC_GAME_VERSION ?? '0.0.0'
-const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(
-  /\/$/,
-  '',
-)
+// 下载源：GitHub 公开 release 的 latest/download 永久链接根。
+// 形如 https://github.com/<owner>/<repo>/releases/latest/download
+// 产物名不含版本号 → 永远指向最新 release，游戏发新版时官网无需改动/重新构建。
+const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(/\/$/, '')
 
-// 与游戏 electron-builder 的 ASCII 产物名保持一致。
+// 与游戏 electron-builder 的 ASCII 产物名保持一致（均不含版本号）。
 const PRODUCT = 'SnoozeYouLose'
+
+// 最新 release 页（去掉末尾 /download），供「最新版本」徽章链接。
+export const latestReleaseUrl = BASE.replace(/\/download$/, '')
 
 function fileName(platform: Platform, arch: Arch): string {
   switch (platform) {
     case 'mac':
-      return `${PRODUCT}-Mac-${VERSION}-${arch}-Installer.dmg`
+      return `${PRODUCT}-Mac-${arch}-Installer.dmg`
     case 'windows':
-      return `${PRODUCT}-Windows-${VERSION}-Setup.exe`
+      return `${PRODUCT}-Windows-Setup.exe`
     case 'linux': {
       // electron-builder 的 AppImage 把 x64 命名为 x86_64
       const linuxArch = arch === 'x64' ? 'x86_64' : arch
-      return `${PRODUCT}-Linux-${VERSION}-${linuxArch}.AppImage`
+      return `${PRODUCT}-Linux-${linuxArch}.AppImage`
     }
   }
 }
 
 function buildUrl(platform: Platform, arch: Arch): string {
-  return `${BASE}/v${VERSION}/${fileName(platform, arch)}`
+  return `${BASE}/${fileName(platform, arch)}`
 }
 
 export const downloads: DownloadEntry[] = [
@@ -53,5 +53,3 @@ export const downloads: DownloadEntry[] = [
     url: buildUrl('linux', 'x64'),
   },
 ]
-
-export const gameVersion = VERSION

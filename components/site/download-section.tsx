@@ -8,7 +8,7 @@ import {
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { downloads, gameVersion, type Platform } from '@/lib/download'
+import { downloads, latestReleaseUrl, type Platform } from '@/lib/download'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
 
 const platformOrder: Platform[] = ['mac', 'windows', 'linux']
@@ -33,8 +33,10 @@ export function DownloadSection({ dict }: { dict: Dictionary['download'] }) {
           <p className="mt-3 text-pretty text-muted-foreground">
             {dict.subtitle}
           </p>
-          <Badge variant="outline" className="mt-4">
-            {dict.versionLabel} v{gameVersion}
+          <Badge variant="outline" className="mt-4" asChild>
+            <a href={latestReleaseUrl} target="_blank" rel="noopener noreferrer">
+              {dict.versionLabel} ↗
+            </a>
           </Badge>
         </div>
 

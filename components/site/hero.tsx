@@ -3,7 +3,6 @@ import { ArrowDown, Sparkles } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
-import { gameVersion } from '@/lib/download'
 
 export function Hero({ dict }: { dict: Dictionary }) {
   return (
@@ -62,10 +61,6 @@ export function Hero({ dict }: { dict: Dictionary }) {
             <a href="#features">{dict.hero.ctaFeatures}</a>
           </Button>
         </div>
-
-        <p className="text-xs text-muted-foreground">
-          {dict.hero.versionLabel} {gameVersion}
-        </p>
       </div>
     </section>
   )
