@@ -39,7 +39,7 @@
   },
   "download": {
     "title": "下载手慢无",
-    "subtitle": "免费且开源。支持 macOS、Windows 与 Linux。",
+    "subtitle": "支持 macOS、Windows 与 Linux。",
     "versionLabel": "最新版本",
     "platform": {
       "mac": "macOS",
