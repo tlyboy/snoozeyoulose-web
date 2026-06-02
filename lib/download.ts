@@ -8,7 +8,8 @@ export interface DownloadEntry {
   url: string
 }
 
-// Fill this in based on the region at deployment: China → Alibaba Cloud OSS, international → Cloudflare R2.
+// Download source: the GitHub public release download root (https://github.com/<owner>/<repo>/releases/download).
+// Final URL = `${BASE}/v${VERSION}/${filename}`; if switching to flat OSS/R2 storage, remove the `v${VERSION}/` segment from buildUrl.
 const VERSION = process.env.NEXT_PUBLIC_GAME_VERSION ?? '0.0.0'
 const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(
   /\/$/,
@@ -24,13 +25,16 @@ function fileName(platform: Platform, arch: Arch): string {
       return `${PRODUCT}-Mac-${VERSION}-${arch}-Installer.dmg`
     case 'windows':
       return `${PRODUCT}-Windows-${VERSION}-Setup.exe`
-    case 'linux':
-      return `${PRODUCT}-Linux-${VERSION}-${arch}.AppImage`
+    case 'linux': {
+      // electron-builder names the x64 AppImage x86_64
+      const linuxArch = arch === 'x64' ? 'x86_64' : arch
+      return `${PRODUCT}-Linux-${VERSION}-${linuxArch}.AppImage`
+    }
   }
 }
 
 function buildUrl(platform: Platform, arch: Arch): string {
-  return `${BASE}/${fileName(platform, arch)}`
+  return `${BASE}/v${VERSION}/${fileName(platform, arch)}`
 }
 
 export const downloads: DownloadEntry[] = [
