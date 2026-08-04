@@ -13,6 +13,21 @@ const eslintConfig = defineConfig([
     'build/**',
     'next-env.d.ts',
   ]),
+  {
+    rules: {
+      // The underscore prefix is an existing "intentionally discarded" convention in these projects, for example when destructuring fields from props
+      // that are not passed down. The default rule doesn't recognize this convention and reports them all as unused.
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
 ])
 
 export default eslintConfig
