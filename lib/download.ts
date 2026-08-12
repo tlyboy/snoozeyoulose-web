@@ -11,7 +11,10 @@ export interface DownloadEntry {
 // Download source: the permanent latest/download URL root for GitHub public releases.
 // Format: https://github.com/<owner>/<repo>/releases/latest/download
 // Artifact names omit the version number → always point to the latest release, so the official site needs no changes or rebuilds when a new game version ships.
-const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(/\/$/, '')
+const BASE = (process.env.NEXT_PUBLIC_DOWNLOAD_BASE_URL ?? '').replace(
+  /\/$/,
+  '',
+)
 
 // Keep these consistent with the game's electron-builder ASCII artifact names (which also omit the version number).
 const PRODUCT = 'SnoozeYouLose'
