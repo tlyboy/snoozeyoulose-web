@@ -1,10 +1,4 @@
-import {
-  Download,
-  Apple,
-  MonitorDown,
-  Terminal,
-  type LucideIcon,
-} from 'lucide-react'
+import { Download, Apple, MonitorDown, Terminal, type LucideIcon } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -30,15 +24,9 @@ export function DownloadSection({ dict }: { dict: Dictionary['download'] }) {
           <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
             {dict.title}
           </h2>
-          <p className="mt-3 text-pretty text-muted-foreground">
-            {dict.subtitle}
-          </p>
+          <p className="mt-3 text-pretty text-muted-foreground">{dict.subtitle}</p>
           <Badge variant="outline" className="mt-4" asChild>
-            <a
-              href={latestReleaseUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={latestReleaseUrl} target="_blank" rel="noopener noreferrer">
               {dict.versionLabel} ↗
             </a>
           </Badge>
@@ -54,9 +42,7 @@ export function DownloadSection({ dict }: { dict: Dictionary['download'] }) {
                   <div className="mb-1 flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="size-6" />
                   </div>
-                  <CardTitle className="text-lg">
-                    {dict.platform[platform]}
-                  </CardTitle>
+                  <CardTitle className="text-lg">{dict.platform[platform]}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2">
                   {entries.map((entry) => (
@@ -71,9 +57,7 @@ export function DownloadSection({ dict }: { dict: Dictionary['download'] }) {
                           <Download className="size-4" />
                           {dict.arch[entry.arch]}
                         </span>
-                        <span className="text-xs text-muted-foreground uppercase">
-                          {entry.ext}
-                        </span>
+                        <span className="text-xs text-muted-foreground uppercase">{entry.ext}</span>
                       </a>
                     </Button>
                   ))}

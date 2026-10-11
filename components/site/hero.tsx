@@ -52,12 +52,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
               {dict.hero.ctaDownload}
             </a>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="h-11 px-6 text-base"
-            asChild
-          >
+          <Button size="lg" variant="outline" className="h-11 px-6 text-base" asChild>
             <a href="#features">{dict.hero.ctaFeatures}</a>
           </Button>
         </div>

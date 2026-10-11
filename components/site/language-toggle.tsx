@@ -7,13 +7,7 @@ import type { Locale } from '@/lib/i18n'
 
 const ONE_YEAR = 60 * 60 * 24 * 365
 
-export function LanguageToggle({
-  lang,
-  label,
-}: {
-  lang: Locale
-  label: string
-}) {
+export function LanguageToggle({ lang, label }: { lang: Locale; label: string }) {
   const router = useRouter()
 
   function toggle() {

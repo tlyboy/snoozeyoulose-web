@@ -11,13 +11,7 @@ export function SiteHeader({ dict, lang }: { dict: Dictionary; lang: Locale }) {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md">
       <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <a href={home} className="flex items-center gap-2 font-semibold">
-          <Image
-            src="/logo.png"
-            alt=""
-            width={28}
-            height={28}
-            className="rounded-md dark:hidden"
-          />
+          <Image src="/logo.png" alt="" width={28} height={28} className="rounded-md dark:hidden" />
           <Image
             src="/logo_white.png"
             alt=""

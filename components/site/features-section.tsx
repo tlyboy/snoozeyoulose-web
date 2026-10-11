@@ -1,16 +1,5 @@
-import {
-  Sprout,
-  BookOpen,
-  Puzzle,
-  Gamepad2,
-  type LucideIcon,
-} from 'lucide-react'
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from '@/components/ui/card'
+import { Sprout, BookOpen, Puzzle, Gamepad2, type LucideIcon } from 'lucide-react'
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import type { Dictionary } from '@/app/[lang]/dictionaries'
 
 const icons: Record<string, LucideIcon> = {
@@ -30,9 +19,7 @@ export function FeaturesSection({ dict }: { dict: Dictionary['features'] }) {
           <h2 className="font-heading text-3xl font-bold tracking-tight text-balance sm:text-4xl">
             {dict.title}
           </h2>
-          <p className="mt-3 text-pretty text-muted-foreground">
-            {dict.subtitle}
-          </p>
+          <p className="mt-3 text-pretty text-muted-foreground">{dict.subtitle}</p>
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -45,9 +32,7 @@ export function FeaturesSection({ dict }: { dict: Dictionary['features'] }) {
                     <Icon className="size-5" />
                   </div>
                   <CardTitle>{item.title}</CardTitle>
-                  <CardDescription className="text-pretty">
-                    {item.desc}
-                  </CardDescription>
+                  <CardDescription className="text-pretty">{item.desc}</CardDescription>
                 </CardHeader>
               </Card>
             )

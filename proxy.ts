@@ -12,11 +12,7 @@ function preferredLocale(request: NextRequest): string {
     },
   })
   try {
-    return match(
-      negotiator.languages(),
-      locales as unknown as string[],
-      defaultLocale,
-    )
+    return match(negotiator.languages(), locales as unknown as string[], defaultLocale)
   } catch {
     return defaultLocale
   }

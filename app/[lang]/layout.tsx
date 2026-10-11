@@ -23,9 +23,7 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }))
 }
 
-export async function generateMetadata({
-  params,
-}: LayoutProps<'/[lang]'>): Promise<Metadata> {
+export async function generateMetadata({ params }: LayoutProps<'/[lang]'>): Promise<Metadata> {
   const { lang } = await params
   if (!hasLocale(lang)) return {}
 
@@ -43,10 +41,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: LayoutProps<'/[lang]'>) {
+export default async function LocaleLayout({ children, params }: LayoutProps<'/[lang]'>) {
   const { lang } = await params
   if (!hasLocale(lang)) notFound()
 
